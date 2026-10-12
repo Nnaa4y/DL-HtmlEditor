@@ -77,4 +77,4 @@ export const Display = {
 export type TDisplay = typeof Display[keyof typeof Display]
 
 // display: ${something}
-export function displayToCssProperty(d: TDisplay): string { return `display: ${d.toString()}`; }
+export function displayToCssProperty(d: TDisplay): string { return `display: ${d.toString()};`; }

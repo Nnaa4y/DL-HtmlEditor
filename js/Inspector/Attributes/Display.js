@@ -52,4 +52,5 @@ exports.Display = {
     //# endregion
 };
 // display: ${something}
-function displayToCssProperty(d) { return `display: ${d.toString()}`; }
+function displayToCssProperty(d) { return `display: ${d.toString()};`; }
+console.log(displayToCssProperty(exports.Display.Block));
