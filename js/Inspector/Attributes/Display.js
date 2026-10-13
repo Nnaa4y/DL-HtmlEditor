@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Display = void 0;
-exports.displayToCssProperty = displayToCssProperty;
 exports.Display = {
     //# region no paired
     //
@@ -51,6 +50,3 @@ exports.Display = {
     Unset: 'unset',
     //# endregion
 };
-// display: ${something}
-function displayToCssProperty(d) { return `display: ${d.toString()};`; }
-console.log(displayToCssProperty(exports.Display.Block));

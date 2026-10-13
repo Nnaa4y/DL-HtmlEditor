@@ -1,80 +1,92 @@
-export const Display = {
-    //# region no paired
-    //
-    None         : 'none',
+import { CSSProperty } from "../CSSProperty.ts";
 
-    Contents     : 'contents',
-    Flow_Root    : 'flow-root',
-    Inline_Block : 'inline-block',
-    //# endregion
+export class Display extends CSSProperty {
+    //#region static variables
 
+    //#region unpaired
 
-    List_Item : 'list-item',
+    public static readonly None                    : string = 'none';
 
+    public static readonly Contents                : string = 'contents';
+    public static readonly Flow_Root               : string = 'flow-root';
+    public static readonly Inline_Block            : string = 'inline-block';
 
-    Flex         : '       flex',
-    Inline_Flex  : 'inline-flex',
+    //#endregion
 
 
-    Grid               : '       grid',
-    Inline_Grid        : 'inline-grid',
+    public static readonly List_Item               : string = 'list-item';
 
 
-    Grid_Lanes        : '       grid-lanes',
-    Inline_Grid_Lanes : 'inline-grid-lanes',
+    public static readonly Flex                    : string = 'flex';
+    public static readonly Inline_Flex             : string = 'inline-flex';
 
 
-    Table        : '       table',
-    Inline_Table : 'inline-table',
+    public static readonly Grid                    : string = 'grid';
+    public static readonly Inline_Grid             : string = 'inline-grid';
 
 
-    //# region Block * -- (does not contain 'block-*', contain 'block *')
-    //
-    Block                  : 'block',
-
-    Block__Flow__List_Item : 'block flow list-item',
-    Block__Flex            : 'block flex',
-
-    Block__Grid            : 'block grid',
-    Block__Grid_Lanes      : 'block grid-lanes',
-
-    Block__Table           : 'block table',
-
-    Block__Flow            : 'block flow',
-    Block__Flow_Root       : 'block flow-root',
-    //# endregion
+    public static readonly Grid_Lanes              : string = 'grid-lanes';
+    public static readonly Inline_Grid_Lanes       : string = 'inline-grid-lanes';
 
 
-    //# region Inline * -- (does not contain 'inline-*', contain 'inline *')
-    //
-    Inline                 : 'inline',
-
-    Inline__List_Item      : 'inline      list-item',
-    Inline__Flow_List_Item : 'inline flow list-item',
-
-    Inline__Flex           : 'inline flex',
-
-    Inline__Grid           : 'inline grid',
-    Inline__Grid_Lanes     : 'inline grid-lanes',
-
-    Inline__Table          : 'inline table',
-
-    Inline__Flow           : 'inline flow',
-    Inline__Flow_Root      : 'inline flow-root',
-    //# endregion
+    public static readonly Table                   : string = 'table';
+    public static readonly Inline_Table            : string = 'inline-table';
 
 
-    //# region global values
-    //
-    Inherit      : 'inherit',
-    Initial      : 'initial',
-    Revert       : 'revert',
-    Revert_Layer : 'revert-layer',
-    Unset        : 'unset',
-    //# endregion
-} as const;
+    //#region block -- contains 'block *' not 'block-*'
 
-export type TDisplay = typeof Display[keyof typeof Display]
+    public static readonly Block                   : string = 'block';
 
-// display: ${something}
-export function displayToCssProperty(d: TDisplay): string { return `display: ${d.toString()};`; }
+    public static readonly Block__Flow__List_Item  : string = 'block flow list-item';
+    public static readonly Block__Flex             : string = 'block-flex';
+
+    public static readonly Block__Grid             : string = 'block grid';
+    public static readonly Block__Grid_Lanes       : string = 'block grid-lanes';
+
+    public static readonly Block__Table            : string = 'block table';
+
+    public static readonly Block__Flow             : string = 'block flow';
+    public static readonly BlocK__Flow_Root        : string = 'block flow-root';
+
+    //#endregion
+
+
+    //#region inline -- contains 'inline *' not 'inline-*'
+
+    public static readonly Inline                  : string = 'inline';
+
+    public static readonly Inline__List_Item       : string = 'inline list-item';
+    public static readonly Inline__Flow__List_Item : string = 'inline flow list-item';
+
+    public static readonly Inline__Flex            : string = 'inline flex';
+
+    public static readonly Inline__Grid            : string = 'inline grid';
+    public static readonly Inline__Grid_Lanes      : string = 'inline grid-lanes';
+
+    public static readonly Inline__Table           : string = 'inline table';
+
+    public static readonly Inline__Flow            : string = 'inline flow';
+    public static readonly Inline__Flow_Root       : string = 'inline flow-root';
+
+    //#endregion
+
+    //#endregion
+
+    private readonly _name : string = 'display';
+    public           Value : string = CSSProperty.Unset;
+
+    public constructor(val: string) {
+        super();
+
+        this.Value = val;
+    }
+
+    
+    public override toCSSProperty(): string {
+        return super.toCSSProperty(this._name, this.Value);
+    }
+
+    public override toString(): string {
+        return this.toCSSProperty();
+    }
+}
