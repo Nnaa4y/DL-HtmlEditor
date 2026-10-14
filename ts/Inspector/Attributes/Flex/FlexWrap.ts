@@ -18,11 +18,7 @@ export class FlexWrap extends CSSProperty {
     }
 
 
-    public override toCSSProperty(): string {
-        return super.toCSSProperty(this._name, this.Value);
-    }
+    public override toCSSProperty: () => string = (): string => super.toCSSProperty(this._name, this.Value);
 
-    public override toString(): string {
-        return this.toCSSProperty();
-    }
+    public override toString: () => string = (): string => this.toCSSProperty();
 }

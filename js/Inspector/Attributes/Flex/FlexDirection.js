@@ -7,19 +7,13 @@ class FlexDirection extends CSSProperty_ts_1.CSSProperty {
     static Row_Reverse = 'row-reverse';
     static Column = 'column';
     static Column_Reverse = 'column-reverse';
-    Name = 'flex-direction';
+    _name = 'flex-direction';
     Value = CSSProperty_ts_1.CSSProperty.Unset;
     constructor(value) {
         super();
         this.Value = value;
     }
-    toCSSProperty() {
-        return super.toCSSProperty(this.Name, this.Value);
-    }
-    toString() {
-        return this.toCSSProperty();
-    }
+    toCSSProperty = () => super.toCSSProperty(this._name, this.Value);
+    toString = () => this.toCSSProperty();
 }
 exports.FlexDirection = FlexDirection;
-let d = new FlexDirection(FlexDirection.Row);
-console.log(d.toString());

@@ -81,12 +81,8 @@ export class Display extends CSSProperty {
         this.Value = val;
     }
 
-    
-    public override toCSSProperty(): string {
-        return super.toCSSProperty(this._name, this.Value);
-    }
 
-    public override toString(): string {
-        return this.toCSSProperty();
-    }
+    public override toCSSProperty: () => string = (): string => super.toCSSProperty(this._name, this.Value.toString());
+
+    public override toString: () => string = (): string => this.toCSSProperty();
 }

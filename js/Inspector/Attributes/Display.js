@@ -1,52 +1,53 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Display = void 0;
-exports.Display = {
-    //# region no paired
-    //
-    None: 'none',
-    Contents: 'contents',
-    Flow_Root: 'flow-root',
-    Inline_Block: 'inline-block',
-    //# endregion
-    List_Item: 'list-item',
-    Flex: '       flex',
-    Inline_Flex: 'inline-flex',
-    Grid: '       grid',
-    Inline_Grid: 'inline-grid',
-    Grid_Lanes: '       grid-lanes',
-    Inline_Grid_Lanes: 'inline-grid-lanes',
-    Table: '       table',
-    Inline_Table: 'inline-table',
-    //# region Block * -- (does not contain 'block-*', contain 'block *')
-    //
-    Block: 'block',
-    Block__Flow__List_Item: 'block flow list-item',
-    Block__Flex: 'block flex',
-    Block__Grid: 'block grid',
-    Block__Grid_Lanes: 'block grid-lanes',
-    Block__Table: 'block table',
-    Block__Flow: 'block flow',
-    Block__Flow_Root: 'block flow-root',
-    //# endregion
-    //# region Inline * -- (does not contain 'inline-*', contain 'inline *')
-    //
-    Inline: 'inline',
-    Inline__List_Item: 'inline      list-item',
-    Inline__Flow_List_Item: 'inline flow list-item',
-    Inline__Flex: 'inline flex',
-    Inline__Grid: 'inline grid',
-    Inline__Grid_Lanes: 'inline grid-lanes',
-    Inline__Table: 'inline table',
-    Inline__Flow: 'inline flow',
-    Inline__Flow_Root: 'inline flow-root',
-    //# endregion
-    //# region global values
-    //
-    Inherit: 'inherit',
-    Initial: 'initial',
-    Revert: 'revert',
-    Revert_Layer: 'revert-layer',
-    Unset: 'unset',
-    //# endregion
-};
+const CSSProperty_ts_1 = require("../CSSProperty.js");
+class Display extends CSSProperty_ts_1.CSSProperty {
+    //#region static variables
+    //#region unpaired
+    static None = 'none';
+    static Contents = 'contents';
+    static Flow_Root = 'flow-root';
+    static Inline_Block = 'inline-block';
+    //#endregion
+    static List_Item = 'list-item';
+    static Flex = 'flex';
+    static Inline_Flex = 'inline-flex';
+    static Grid = 'grid';
+    static Inline_Grid = 'inline-grid';
+    static Grid_Lanes = 'grid-lanes';
+    static Inline_Grid_Lanes = 'inline-grid-lanes';
+    static Table = 'table';
+    static Inline_Table = 'inline-table';
+    //#region block -- contains 'block *' not 'block-*'
+    static Block = 'block';
+    static Block__Flow__List_Item = 'block flow list-item';
+    static Block__Flex = 'block-flex';
+    static Block__Grid = 'block grid';
+    static Block__Grid_Lanes = 'block grid-lanes';
+    static Block__Table = 'block table';
+    static Block__Flow = 'block flow';
+    static BlocK__Flow_Root = 'block flow-root';
+    //#endregion
+    //#region inline -- contains 'inline *' not 'inline-*'
+    static Inline = 'inline';
+    static Inline__List_Item = 'inline list-item';
+    static Inline__Flow__List_Item = 'inline flow list-item';
+    static Inline__Flex = 'inline flex';
+    static Inline__Grid = 'inline grid';
+    static Inline__Grid_Lanes = 'inline grid-lanes';
+    static Inline__Table = 'inline table';
+    static Inline__Flow = 'inline flow';
+    static Inline__Flow_Root = 'inline flow-root';
+    //#endregion
+    //#endregion
+    _name = 'display';
+    Value = CSSProperty_ts_1.CSSProperty.Unset;
+    constructor(val) {
+        super();
+        this.Value = val;
+    }
+    toCSSProperty = () => super.toCSSProperty(this._name, this.Value.toString());
+    toString = () => this.toCSSProperty();
+}
+exports.Display = Display;
