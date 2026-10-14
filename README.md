@@ -19,7 +19,7 @@ class Example {
 
     public static readonly 
     Something__With_Double_Underscore: string
-        = 'something with-only-underscore';
+        = 'something with-double-underscore';
 }
 ```
 
