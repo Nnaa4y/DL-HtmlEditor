@@ -25,5 +25,5 @@ class Flex extends CSSProperty_ts_1.CSSProperty {
     toString = () => this.toCSSProperty();
 }
 exports.Flex = Flex;
-let f = new Flex(new FlexGrow_ts_1.FlexGrow(1.0), new FlexShrink_ts_1.FlexShrink(1.5), new FlexBasis_ts_1.FlexBasis(FlexBasis_ts_1.FlexBasis.MaxContent));
+let f = new Flex(new FlexGrow_ts_1.FlexGrow(3.0), new FlexShrink_ts_1.FlexShrink(2.0), new FlexBasis_ts_1.FlexBasis(FlexBasis_ts_1.FlexBasis.MaxContent));
 console.log(f.toCSSProperty());
