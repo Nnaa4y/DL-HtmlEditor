@@ -2,9 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Flex = void 0;
 const CSSProperty_ts_1 = require("../../CSSProperty.js");
-const FlexShrink_ts_1 = require("./FlexShrink.js");
-const FlexGrow_ts_1 = require("./FlexGrow.js");
-const FlexBasis_ts_1 = require("./FlexBasis.js");
 class Flex extends CSSProperty_ts_1.CSSProperty {
     static None;
     static MaxContent = '1 1 max-content';
@@ -25,5 +22,3 @@ class Flex extends CSSProperty_ts_1.CSSProperty {
     toString = () => this.toCSSProperty();
 }
 exports.Flex = Flex;
-let f = new Flex(new FlexGrow_ts_1.FlexGrow(3.0), new FlexShrink_ts_1.FlexShrink(2.0), new FlexBasis_ts_1.FlexBasis(FlexBasis_ts_1.FlexBasis.MaxContent));
-console.log(f.toCSSProperty());

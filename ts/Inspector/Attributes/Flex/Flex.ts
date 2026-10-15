@@ -32,6 +32,3 @@ export class Flex extends CSSProperty {
 
     public override toString: () => string = (): string => this.toCSSProperty();
 }
-
-let f: Flex = new Flex(new FlexGrow(3.0), new FlexShrink(2.0), new FlexBasis(FlexBasis.MaxContent));
-console.log(f.toCSSProperty());
