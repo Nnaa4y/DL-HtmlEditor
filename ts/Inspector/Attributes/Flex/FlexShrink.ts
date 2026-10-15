@@ -2,9 +2,9 @@ import { CSSProperty } from "../../CSSProperty.ts";
 
 export class FlexShrink extends CSSProperty {
     private readonly _name: string = 'flex-shrink';
-    public           Value: number = 0.0;
+    public           Value: number | string = 0.0;
 
-    public constructor(val: number) {
+    public constructor(val: number | string) {
         super();
 
         this.Value = val;
