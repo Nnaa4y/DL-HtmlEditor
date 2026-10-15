@@ -5,7 +5,7 @@ const CSSProperty_ts_1 = require("../../CSSProperty.js");
 class FlexGrow extends CSSProperty_ts_1.CSSProperty {
     _name = 'flex-grow';
     Value = 0.0;
-    constructor(val = 0.0) {
+    constructor(val) {
         super();
         this.Value = val;
     }
