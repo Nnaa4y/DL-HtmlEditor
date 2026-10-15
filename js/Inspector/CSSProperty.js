@@ -6,7 +6,7 @@ class CSSProperty {
     static Inherit = 'inherit';
     static Initial = 'initial';
     static Revert = 'revert';
-    static Revert_Layer = 'revert_layer';
+    static Revert_Layer = 'revert-layer';
     static Unset = 'unset';
     // returns '${name}: ${value};'
     toCSSProperty(name, value) {

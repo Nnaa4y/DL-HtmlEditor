@@ -3,7 +3,7 @@ export class CSSProperty {
     public static readonly Inherit      : string = 'inherit';
     public static readonly Initial      : string = 'initial';
     public static readonly Revert       : string = 'revert';
-    public static readonly Revert_Layer : string = 'revert_layer';
+    public static readonly Revert_Layer : string = 'revert-layer';
     public static readonly Unset        : string = 'unset';
 
     // returns '${name}: ${value};'
