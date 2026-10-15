@@ -5,9 +5,9 @@ export class GridRowStart extends CSSProperty {
 
     private readonly _name      : string = 'grid-row-start';
 
-    public IntegerValue         : number;
-    public CustomIdent          : string;
-    public IsSpan               : boolean;
+    public IntegerValue         : number  = null;
+    public CustomIdent          : string  = null;
+    public IsSpan               : boolean = false;
 
     public constructor(is_span: boolean, integer: number, ident: string) {
         super();
@@ -18,7 +18,14 @@ export class GridRowStart extends CSSProperty {
     }
 
 
-    public override toCSSProperty: () => string = (): string => super.toCSSProperty(this._name, `${(this.IsSpan?'span':'\b')} ${this.CustomIdent} ${this.IntegerValue}`);
+    public override toCSSProperty:
+        () => string
+    = (): string => super.toCSSProperty(
+        this._name,
+        `${(this.IsSpan      ? 'span'            : '\b')} ` +
+        `${this.CustomIdent  ? this.CustomIdent  : '\b' } ` +
+        `${this.IntegerValue ? this.IntegerValue : '\b'}`
+    );
 
     public override toString: () => string = (): string => this.toCSSProperty();
 }
