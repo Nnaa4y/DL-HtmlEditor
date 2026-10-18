@@ -18,13 +18,18 @@ export class GridRowEnd extends CSSProperty {
     }
 
 
+    public getValues:
+        () => string
+    = (): string =>
+        `${(this.IsSpan      ? 'span'            : '\b')} ` +
+        `${this.CustomIdent  ? this.CustomIdent  : '\b' } ` +
+        `${this.IntegerValue ? this.IntegerValue : '\b'}`;
+
     public override toCSSProperty:
         () => string
         = (): string => super.toCSSProperty(
         this._name,
-        `${(this.IsSpan      ? 'span'            : '\b')} ` +
-        `${this.CustomIdent  ? this.CustomIdent  : '\b' } ` +
-        `${this.IntegerValue ? this.IntegerValue : '\b'}`
+        this.getValues()
     );
 
     public override toString: () => string = (): string => this.toCSSProperty();

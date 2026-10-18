@@ -14,9 +14,10 @@ class GridRowEnd extends CSSProperty_ts_1.CSSProperty {
         this.CustomIdent = ident;
         this.IsSpan = is_span;
     }
-    toCSSProperty = () => super.toCSSProperty(this._name, `${(this.IsSpan ? 'span' : '\b')} ` +
+    getValues = () => `${(this.IsSpan ? 'span' : '\b')} ` +
         `${this.CustomIdent ? this.CustomIdent : '\b'} ` +
-        `${this.IntegerValue ? this.IntegerValue : '\b'}`);
+        `${this.IntegerValue ? this.IntegerValue : '\b'}`;
+    toCSSProperty = () => super.toCSSProperty(this._name, this.getValues());
     toString = () => this.toCSSProperty();
 }
 exports.GridRowEnd = GridRowEnd;
