@@ -43,5 +43,3 @@ class GridAutoRows extends CSSProperty_ts_1.CSSProperty {
     toString = () => this.toCSSProperty();
 }
 exports.GridAutoRows = GridAutoRows;
-let rows = new GridAutoRows('5px', '100%', '0.4fr', '100px, auto', null);
-console.log(rows.toString());
