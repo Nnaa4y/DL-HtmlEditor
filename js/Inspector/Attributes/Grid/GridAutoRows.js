@@ -35,11 +35,14 @@ class GridAutoRows extends CSSProperty_ts_1.CSSProperty {
             this.FitContentValue = this.makeFitContent(pieces[0], pieces[1]);
         }
     }
-    toCSSProperty = () => super.toCSSProperty(this._name, `${this.IntegerValue ? this.IntegerValue : '\b'} ` +
-        `${this.PercentageValue ? this.PercentageValue.toString() + '%' : '\b'} ` +
-        `${this.FlexValue ? this.FlexValue.toString() + 'fr' : '\b'} ` +
-        `${this.MinMaxValue ? this.MinMaxValue : '\b'} ` +
-        `${this.FitContentValue ? this.FitContentValue : '\b'}`);
+    getValues() {
+        return (`${this.IntegerValue ? this.IntegerValue : '\b'} ` +
+            `${this.PercentageValue ? this.PercentageValue.toString() + '%' : '\b'} ` +
+            `${this.FlexValue ? this.FlexValue.toString() + 'fr' : '\b'} ` +
+            `${this.MinMaxValue ? this.MinMaxValue : '\b'} ` +
+            `${this.FitContentValue ? this.FitContentValue : '\b'}`);
+    }
+    toCSSProperty = () => super.toCSSProperty(this._name, this.getValues());
     toString = () => this.toCSSProperty();
 }
 exports.GridAutoRows = GridAutoRows;

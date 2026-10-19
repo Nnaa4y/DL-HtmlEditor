@@ -64,19 +64,21 @@ export class GridTemplateRows extends CSSProperty {
         this.IsSubgrid = is_subgrid;
     }
 
-    public override toCSSProperty: () => string
-        = (): string =>
-        this.IsSubgrid ?
-            super.toCSSProperty(this._name, 'subgrid')
+    public getValues(): string {
+        return (
+            this.IsSubgrid ?
+                'subgrid'
                 :
-            super.toCSSProperty(
-                this._name,
                 `${this.LengthValue     ? this.LengthValue                        : '\b'} ` +
                 `${this.FlexValue       ? this.FlexValue      .toString() + 'fr'  : '\b'} ` +
                 `${this.MinMaxValue     ? this.MinMaxValue                        : '\b'} ` +
                 `${this.FitContentValue ? this.FitContentValue                    : '\b'} ` +
                 `${this.RepeatValue     ? this.RepeatValue                        : '\b'}`
-            );
+        );
+    }
+
+    public override toCSSProperty: () => string
+        = (): string => super.toCSSProperty(this._name, this.getValues());
 
     public override toString: () => string = (): string => this.toCSSProperty();
 }

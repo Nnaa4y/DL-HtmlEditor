@@ -21,22 +21,24 @@ class GridTemplateAreas extends CSSProperty_ts_1.CSSProperty {
         super();
         this.Areas = areas;
     }
-    toCSSProperty = () => super.toCSSProperty(this._name, (() => {
-        // join ' '  (inner list)
-        // join '\n\t' (outer list)
-        let tmp = '';
-        let res = '';
-        this.Areas.forEach((tmpAreas) => {
-            res = res.concat('\n\t');
-            tmp = tmp.concat('\"');
-            tmpAreas.forEach((area) => tmp = tmp.concat(area, ' '));
-            tmp = tmp.concat('\b\"');
-            res = res.concat(tmp);
-            tmp = '';
-        });
-        return res;
-    })() // unnamed action callback
-    ); // toCSSProperty
+    getValues() {
+        return (() => {
+            // join ' '  (inner list)
+            // join '\n\t' (outer list)
+            let tmp = '';
+            let res = '';
+            this.Areas.forEach((tmpAreas) => {
+                res = res.concat('\n\t');
+                tmp = tmp.concat('\"');
+                tmpAreas.forEach((area) => tmp = tmp.concat(area, ' '));
+                tmp = tmp.concat('\b\"');
+                res = res.concat(tmp);
+                tmp = '';
+            });
+            return res;
+        })(); // unnamed action callback
+    }
+    toCSSProperty = () => super.toCSSProperty(this._name, this.getValues()); // toCSSProperty
     toString = () => this.toCSSProperty();
 }
 exports.GridTemplateAreas = GridTemplateAreas;

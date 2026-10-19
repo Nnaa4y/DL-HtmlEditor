@@ -23,33 +23,37 @@ export class GridTemplateAreas extends CSSProperty {
         this.Areas = areas;
     }
 
+    public getValues(): string {
+        return (
+            (): string => {
+                // join ' '  (inner list)
+                // join '\n\t' (outer list)
+
+                let tmp: string = '';
+                let res: string = '';
+                this.Areas.forEach(
+                    (tmpAreas: string[]): void => {
+                        res = res.concat('\n\t');
+                        tmp = tmp.concat('\"');
+
+                        tmpAreas.forEach((area: string): string => tmp = tmp.concat(area, ' '));
+
+                        tmp = tmp.concat('\b\"');
+                        res = res.concat(tmp);
+
+                        tmp = '';
+                    }
+                )
+
+                return res;
+            }
+        )() // unnamed action callback
+    }
+
     public override toCSSProperty: () => string
         = (): string => super.toCSSProperty(
             this._name,
-            (
-                (): string => {
-                    // join ' '  (inner list)
-                    // join '\n\t' (outer list)
-
-                    let tmp: string = '';
-                    let res: string = '';
-                    this.Areas.forEach(
-                        (tmpAreas: string[]): void => {
-                            res = res.concat('\n\t');
-                            tmp = tmp.concat('\"');
-
-                            tmpAreas.forEach((area: string): string => tmp = tmp.concat(area, ' '));
-
-                            tmp = tmp.concat('\b\"');
-                            res = res.concat(tmp);
-
-                            tmp = '';
-                        }
-                    )
-
-                    return res;
-                }
-            )() // unnamed action callback
+            this.getValues()
     ); // toCSSProperty
 
     public override toString: () => string = (): string => this.toCSSProperty();

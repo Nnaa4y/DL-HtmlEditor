@@ -49,14 +49,19 @@ export class GridAutoColumns extends CSSProperty {
         }
     }
 
+    public getValues(): string {
+        return(
+            `${this.IntegerValue    ? this.IntegerValue                       : '\b'} ` +
+            `${this.PercentageValue ? this.PercentageValue.toString() + '%'   : '\b'} ` +
+            `${this.FlexValue       ? this.FlexValue      .toString() + 'fr' : '\b'} ` +
+            `${this.MinMaxValue     ? this.MinMaxValue                        : '\b'} ` +
+            `${this.FitContentValue ? this.FitContentValue                    : '\b'}`);
+    }
+
     public override toCSSProperty: () => string
         = (): string => super.toCSSProperty(
         this._name,
-        `${this.IntegerValue    ? this.IntegerValue                       : '\b'} ` +
-        `${this.PercentageValue ? this.PercentageValue.toString() + '%'   : '\b'} ` +
-        `${this.FlexValue       ? this.FlexValue      .toString() + 'fr' : '\b'} ` +
-        `${this.MinMaxValue     ? this.MinMaxValue                        : '\b'} ` +
-        `${this.FitContentValue ? this.FitContentValue                    : '\b'}`
+        this.getValues()
     );
 
     public override toString: () => string = (): string => this.toCSSProperty();

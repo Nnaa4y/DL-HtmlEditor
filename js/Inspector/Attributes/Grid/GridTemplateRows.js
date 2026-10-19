@@ -50,14 +50,17 @@ class GridTemplateRows extends CSSProperty_ts_1.CSSProperty {
         }
         this.IsSubgrid = is_subgrid;
     }
-    toCSSProperty = () => this.IsSubgrid ?
-        super.toCSSProperty(this._name, 'subgrid')
-        :
-            super.toCSSProperty(this._name, `${this.LengthValue ? this.LengthValue : '\b'} ` +
-                `${this.FlexValue ? this.FlexValue.toString() + 'fr' : '\b'} ` +
-                `${this.MinMaxValue ? this.MinMaxValue : '\b'} ` +
-                `${this.FitContentValue ? this.FitContentValue : '\b'} ` +
-                `${this.RepeatValue ? this.RepeatValue : '\b'}`);
+    getValues() {
+        return (this.IsSubgrid ?
+            'subgrid'
+            :
+                `${this.LengthValue ? this.LengthValue : '\b'} ` +
+                    `${this.FlexValue ? this.FlexValue.toString() + 'fr' : '\b'} ` +
+                    `${this.MinMaxValue ? this.MinMaxValue : '\b'} ` +
+                    `${this.FitContentValue ? this.FitContentValue : '\b'} ` +
+                    `${this.RepeatValue ? this.RepeatValue : '\b'}`);
+    }
+    toCSSProperty = () => super.toCSSProperty(this._name, this.getValues());
     toString = () => this.toCSSProperty();
 }
 exports.GridTemplateRows = GridTemplateRows;
