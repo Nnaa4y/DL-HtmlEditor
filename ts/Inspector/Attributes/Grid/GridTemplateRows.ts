@@ -82,6 +82,3 @@ export class GridTemplateRows extends CSSProperty {
 
     public override toString: () => string = (): string => this.toCSSProperty();
 }
-
-let rows: GridTemplateRows = new GridTemplateRows('100px', '2fr', null, null, '5, 2fr', false);
-console.log(rows.toString());
